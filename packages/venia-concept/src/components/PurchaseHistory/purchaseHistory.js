@@ -6,7 +6,6 @@ import PurchaseHistoryItem from './PurchaseHistoryItem';
 import classify from 'src/classify';
 import defaultClasses from './purchaseHistory.css';
 import Filter from './Filter';
-import mockPurchaseHistory from './purchaseHistoryItemsMock';
 
 class PurchaseHistory extends Component {
     static propTypes = {
@@ -26,10 +25,15 @@ class PurchaseHistory extends Component {
         )
     };
 
-    //TODO: remove this mock items setting
-    static defaultProps = {
-        items: mockPurchaseHistory
-    };
+    componentDidMount() {
+        const { getPurchaseHistory } = this.props;
+        getPurchaseHistory();
+    }
+
+    componentWillUnmount() {
+        const { resetPurchaseHistory } = this.props;
+        resetPurchaseHistory();
+    }
 
     render() {
         const { classes, items } = this.props;
