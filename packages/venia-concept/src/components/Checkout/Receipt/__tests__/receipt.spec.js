@@ -22,17 +22,20 @@ test('renders correctly', () => {
     expect(wrapper.find(Button)).toHaveLength(2);
 });
 
-test('calls `resetCheckout` when `Continue Shopping` button is pressed', () => {
-    const resetCheckout = jest.fn();
+test('calls `handleContinueShopping` when `Continue Shopping` button is pressed', () => {
+    const handleContinueShoppingMock = jest.fn();
 
     const wrapper = shallow(
-        <Receipt resetCheckout={resetCheckout} classes={classes} />
+        <Receipt
+            handleContinueShopping={handleContinueShoppingMock}
+            classes={classes}
+        />
     ).dive();
     wrapper
         .findWhere(el => el.prop('data-id') === CONTINUE_SHOPPING_BUTTON_ID)
         .first()
         .simulate('click');
-    expect(resetCheckout).toBeCalled();
+    expect(handleContinueShoppingMock).toBeCalled();
 });
 
 test('calls `handleCreateAccount` when `Create an Account` button is pressed', () => {

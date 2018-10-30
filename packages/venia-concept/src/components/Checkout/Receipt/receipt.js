@@ -14,7 +14,7 @@ class Receipt extends Component {
             footer: string,
             root: string
         }),
-        resetCheckout: func,
+        handleContinueShopping: func,
         order: shape({
             id: string
         }),
@@ -37,10 +37,13 @@ class Receipt extends Component {
         this.props.handleCreateAccount(this.props.history);
     };
 
+    continueShopping = () => {
+        this.props.handleContinueShopping(this.props.history);
+    };
+
     render() {
         const {
             classes,
-            resetCheckout,
             order: { id }
         } = this.props;
 
@@ -60,7 +63,7 @@ class Receipt extends Component {
                     <Button
                         data-id={CONTINUE_SHOPPING_BUTTON_ID}
                         classes={darkThemeClasses}
-                        onClick={resetCheckout}
+                        onClick={this.continueShopping}
                     >
                         Continue Shopping
                     </Button>

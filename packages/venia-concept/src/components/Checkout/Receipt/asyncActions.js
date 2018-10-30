@@ -9,3 +9,9 @@ export const handleCreateAccount = history => async (dispatch, getState) => {
 
     history.push(`/create-account${objectToQueryString(accountInfo)}`);
 };
+
+export const handleContinueShopping = history => async dispatch => {
+    await dispatch(resetCheckout());
+
+    history.push('/');
+};
