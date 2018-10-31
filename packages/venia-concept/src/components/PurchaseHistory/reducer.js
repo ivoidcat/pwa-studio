@@ -1,22 +1,29 @@
 import { handleActions } from 'redux-actions';
 
-import actions from 'src/actions/purchaseHistory';
-
-export const name = 'purchaseHistory';
+import actions from './actions';
 
 const initialState = {
-    items: {}
+    items: [],
+    isFetching: false
 };
 
 const reducerMap = {
+    [actions.fetchPurchaseHistoryRequest]: state => ({
+        ...state,
+        isFetching: true
+    }),
     [actions.setItems]: (state, { payload, error }) => {
         if (error) {
-            return state;
+            return {
+                ...state,
+                isFetching: false
+            };
         }
 
         return {
             ...state,
-            items: payload
+            isFetching: false,
+            items: payload.items
         };
     },
     [actions.reset]: () => initialState

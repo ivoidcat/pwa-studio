@@ -14,7 +14,7 @@ import userReducer from 'src/reducers/user';
 import cartReducer from 'src/reducers/cart';
 import checkoutReducer from 'src/reducers/checkout';
 import directoryReducer from 'src/reducers/directory';
-import purchaseHistoryReducer from 'src/reducers/purchaseHistory';
+import purchaseHistoryReducer from 'src/components/PurchaseHistory/reducer';
 
 import './index.css';
 

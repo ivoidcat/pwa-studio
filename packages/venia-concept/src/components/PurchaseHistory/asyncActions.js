@@ -1,13 +1,13 @@
-import { RestApi } from '@magento/peregrine';
-
 import actions from './actions';
-
-const { request } = RestApi.Magento2;
+import { restService } from 'src/services';
 
 export const getPurchaseHistory = () =>
     async function thunk(dispatch) {
+        dispatch(actions.fetchPurchaseHistoryRequest());
+
         try {
-            const response = await request('/rest/V1/orders/items');
+            const response = await restService.api.fetchPurchaseHistory();
+
             dispatch(actions.setItems(response));
         } catch (error) {
             dispatch(actions.setItems(error));

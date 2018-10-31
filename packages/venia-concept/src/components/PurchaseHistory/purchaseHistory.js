@@ -36,26 +36,30 @@ class PurchaseHistory extends Component {
     }
 
     render() {
-        const { classes, items } = this.props;
+        const { classes, items, isFetching } = this.props;
         return (
             <div className={classes.body}>
                 <div className={classes.filterContainer}>
                     <Filter />
                 </div>
-                <List
-                    items={items}
-                    getItemKey={({ id }) => id}
-                    render={props => (
-                        <ul className={classes.itemsContainer}>
-                            {props.children}
-                        </ul>
-                    )}
-                    renderItem={props => (
-                        <li>
-                            <PurchaseHistoryItem {...props} />
-                        </li>
-                    )}
-                />
+                {isFetching ? (
+                    'Loading...'
+                ) : (
+                    <List
+                        items={items}
+                        getItemKey={({ id }) => id}
+                        render={props => (
+                            <ul className={classes.itemsContainer}>
+                                {props.children}
+                            </ul>
+                        )}
+                        renderItem={props => (
+                            <li>
+                                <PurchaseHistoryItem {...props} />
+                            </li>
+                        )}
+                    />
+                )}
             </div>
         );
     }
