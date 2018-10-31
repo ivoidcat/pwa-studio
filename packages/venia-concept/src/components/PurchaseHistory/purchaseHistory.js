@@ -42,24 +42,25 @@ class PurchaseHistory extends Component {
                 <div className={classes.filterContainer}>
                     <Filter />
                 </div>
-                {isFetching ? (
-                    'Loading...'
-                ) : (
-                    <List
-                        items={items}
-                        getItemKey={({ id }) => id}
-                        render={props => (
-                            <ul className={classes.itemsContainer}>
-                                {props.children}
-                            </ul>
-                        )}
-                        renderItem={props => (
-                            <li>
-                                <PurchaseHistoryItem {...props} />
-                            </li>
-                        )}
-                    />
-                )}
+                <List
+                    isLoading={isFetching}
+                    items={items}
+                    getItemKey={({ id }) => id}
+                    render={props => (
+                        <ul className={classes.itemsContainer}>
+                            {props.children}
+                        </ul>
+                    )}
+                    renderItem={props => (
+                        <li>
+                            <PurchaseHistoryItem {...props} />
+                        </li>
+                    )}
+                    renderLoadingState={() => <div>Loading...</div>}
+                    renderEmptyState={() => (
+                        <div>Purchase history is empty.</div>
+                    )}
+                />
             </div>
         );
     }
