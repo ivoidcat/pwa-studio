@@ -2,6 +2,7 @@ import { RestApi } from '@magento/peregrine';
 
 import { closeDrawer, toggleDrawer } from 'src/actions/app';
 import checkoutActions from 'src/actions/checkout';
+import { restService } from 'src/services';
 import actions from './actions';
 import { Util } from '@magento/peregrine';
 
@@ -83,20 +84,15 @@ export const addItemToCart = (payload = {}) => {
                 console.log('Missing required information: guestCartId');
             }
 
-            const cartItem = await request(
-                `/rest/V1/guest-carts/${guestCartId}/items`,
-                {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        cartItem: {
-                            qty: quantity,
-                            sku: item.sku,
-                            name: item.name,
-                            quote_id: guestCartId
-                        }
-                    })
+            const cartItem = await restService.api.addItemToGuestCart({
+                guestCartId,
+                cartItem: {
+                    qty: quantity,
+                    sku: item.sku,
+                    name: item.name,
+                    quote_id: guestCartId
                 }
-            );
+            });
 
             dispatch(actions.addItem.receive({ cartItem, item, quantity }));
         } catch (error) {

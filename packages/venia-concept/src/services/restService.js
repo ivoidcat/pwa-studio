@@ -1,4 +1,17 @@
+import { RestApi } from '@magento/peregrine';
 import purchaseHistoryMock from './mocks/purchaseHistoryMock';
+
+const { request } = RestApi.Magento2;
+
+const API_VERSION = 'V1';
+
+export const addItemToGuestCart = ({ guestCartId, cartItem }) =>
+    request(`/rest/${API_VERSION}/guest-carts/${guestCartId}/items`, {
+        method: 'POST',
+        body: JSON.stringify({
+            cartItem
+        })
+    });
 
 // TODO: make a request here.
 export const fetchPurchaseHistory = () =>
@@ -9,6 +22,7 @@ export const fetchPurchaseHistory = () =>
 const restService = {};
 
 restService.api = {
+    addItemToGuestCart,
     fetchPurchaseHistory
 };
 
