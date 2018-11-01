@@ -2,10 +2,9 @@ import { connect } from 'react-redux';
 import {
     getPurchaseHistoryItems,
     isPurchaseHistoryFetching
-} from './selectors';
+} from 'src/selectors/purchaseHistory';
 import PurchaseHistory from './purchaseHistory';
-import { getPurchaseHistory } from './asyncActions';
-import actions from './actions';
+import actions, { getPurchaseHistory } from 'src/actions/purchaseHistory';
 
 const mapStateToProps = state => {
     return {

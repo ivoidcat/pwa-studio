@@ -1,5 +1,7 @@
-import { generatePurchaseDetailsPageUrl } from './helpers';
 import dressImage from './dress.jpg';
+
+// TODO: implement this helper when purchase details page will be ready.
+export const generatePurchaseDetailsPageUrl = () => `/`;
 
 export const getPurchaseHistoryItems = ({ purchaseHistory: { items = [] } }) =>
     items.map(({ item_id, name, date }) => ({
