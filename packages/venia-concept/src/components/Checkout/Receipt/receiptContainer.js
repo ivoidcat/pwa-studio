@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import actions from './actions';
-import { handleCreateAccount, handleContinueShopping } from './asyncActions';
+import actions, {
+    handleCreateAccount,
+    handleContinueShopping
+} from 'src/actions/checkoutReceipt';
 import Receipt from './receipt';
-import { getOrderInformation } from './selectors';
+import { getOrderInformation } from '../../../selectors/checkoutReceipt';
 
 const { reset } = actions;
 

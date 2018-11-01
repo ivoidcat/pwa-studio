@@ -15,7 +15,7 @@ import userReducer from 'src/reducers/user';
 import cartReducer from 'src/reducers/cart';
 import checkoutReducer from 'src/reducers/checkout';
 import directoryReducer from 'src/reducers/directory';
-import checkoutReceipt from 'src/components/Checkout/Receipt/reducer';
+import checkoutReceipt from 'src/reducers/checkoutReceipt';
 
 import './index.css';
 

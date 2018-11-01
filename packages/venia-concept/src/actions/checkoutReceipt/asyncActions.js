@@ -1,6 +1,6 @@
-import { resetCheckout } from 'src/actions/checkout/asyncActions';
+import { resetCheckout } from 'src/actions/checkout';
 import { objectToQueryString } from 'src/util/queryStringHelpers';
-import { getAccountInformation } from './selectors';
+import { getAccountInformation } from 'src/selectors/checkoutReceipt';
 
 export const handleCreateAccount = history => async (dispatch, getState) => {
     const accountInfo = getAccountInformation(getState());

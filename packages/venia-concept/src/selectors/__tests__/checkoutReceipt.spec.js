@@ -1,4 +1,4 @@
-import { getOrderInformation, getAccountInformation } from '../selectors';
+import { getOrderInformation, getAccountInformation } from '../checkoutReceipt';
 
 test('getOrderInformation returns order', () => {
     const order = { id: 1, billing_address: {} };
