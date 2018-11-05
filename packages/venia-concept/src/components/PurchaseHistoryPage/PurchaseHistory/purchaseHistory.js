@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
-import { shape, number, string, date, arrayOf } from 'prop-types';
+import { shape, string, arrayOf } from 'prop-types';
 import { List } from '@magento/peregrine';
 
 import PurchaseHistoryItem from '../PurchaseHistoryItem';
 import classify from 'src/classify';
 import defaultClasses from './purchaseHistory.css';
 import Filter from '../Filter';
+import { PURCHASE_HISTORY_ITEM_PROP_TYPES } from './constants';
 
 class PurchaseHistory extends Component {
     static propTypes = {
         classes: shape({
             body: string,
+            item: string,
             filterContainer: string,
             itemsContainer: string
         }),
-        items: arrayOf(
-            shape({
-                id: number,
-                imageSrc: string,
-                title: string,
-                date: date,
-                link: string
-            })
-        )
+        items: arrayOf(shape(PURCHASE_HISTORY_ITEM_PROP_TYPES))
     };
 
     componentDidMount() {
@@ -52,7 +46,7 @@ class PurchaseHistory extends Component {
                         </ul>
                     )}
                     renderItem={props => (
-                        <li>
+                        <li className={classes.item}>
                             <PurchaseHistoryItem {...props} />
                         </li>
                     )}

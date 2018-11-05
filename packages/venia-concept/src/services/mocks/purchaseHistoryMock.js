@@ -1,7 +1,7 @@
 export default {
     items: [
         {
-            item_id: 28,
+            item_id: 27,
             name: 'Crown Summit Backpack',
             date: new Date(),
             image: {
